@@ -7,6 +7,16 @@ public class Main {
         System.out.println(shouldWakeUp(false, 2)); //Exercise3
 
         areEqualByThreeDecimalPlaces(3.175, 3.176);
+        printYearsAndDays(561600);
+        printYearsAndDays(525600);
+        printYearsAndDays(1051200);
+        printYearsAndDays(-1);
+
+        printEqual(1,1,1);
+        printEqual(1,1,2);
+        printEqual(-1,-1,-1);
+        printEqual(1,2,3);
+
     }
     //Exercise 1
     public static long toMilesPerHour(double kilometersPerHour){
@@ -104,5 +114,72 @@ public class Main {
         }
         return false;
     }
+
+    //Exercise8 - Area Calculator
+
+    public static double area(double radius){
+        if(radius<0){
+            return -1.0;
+        }
+        //calculate circle area
+        return radius*radius*Math.PI;
+    }
+
+    public static double area(double x, double y){
+        //x,y represent the two sides of a rectangle
+        if(x<0||y<0){
+            return -1.0;
+        }
+        return x * y;
+    }
+
+    //Exercise9 - Minutes to Years and Days Calculator
+    public static void printYearsAndDays(long minutes){
+        //calculate the years and days from minutes
+        if(minutes<0){
+            System.out.println("Invalid Value");
+        }
+        else{
+            long hours = minutes/60;
+            long days = hours/24;
+            long years = days/365;
+            long remainingDays = days%365;
+            System.out.println(minutes+" min = " +years +" y and " + remainingDays +" d");
+        }
+    }
+
+    //Exercise10 -Equality Printer
+    public static void printEqual(int x, int y, int z){
+        if(x<0 ||y<0 || z<0){
+            System.out.println("Invalid Value");
+        }
+        else if(x == y || y == z || x == z){
+            if (x != y || y != z || x != z){
+                System.out.println("Neither all are equal or different");
+            }
+            else{
+                System.out.println("All numbers are equal");
+            }
+        }
+        else{
+            System.out.println("All numbers are different");
+        }
+    }
+
+
+    //Exercise11 - Playing Cat
+    public static boolean isCatPlaying(boolean summer, int temperature) {
+        if (summer) {
+            if (temperature >= 25 && temperature <= 45) {
+                return true;
+            }
+        }
+        else if (temperature >= 25 && temperature <= 35) {
+            return true;
+        }
+
+        return false;
+    }
+
 
 }
