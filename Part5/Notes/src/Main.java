@@ -224,9 +224,12 @@ public class Main {
         if(number < 10){
             return -1;
         }
-        //123----123/10 = 12
-        //12*10 = 120
-        // 123-120 = 3
+        //123----123%10 = 3
+        //123/10 = 12
+        // 12%10 = 2
+        //12/10 = 1
+        //1%10 = 1
+        //1/10 =0 --exit
         while(number>0){
             int digit = number % 10;
             System.out.println("The digit is " +digit );
