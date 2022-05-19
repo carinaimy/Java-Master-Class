@@ -149,6 +149,14 @@ public class Main {
         //Digit Sum Challenge
         System.out.println(sumDigits(123));
 
+        //Parsing Values from a String
+        String numberAsString = "2018";
+        System.out.println("NumberAsString= " + numberAsString);
+
+        int number1 = Integer.parseInt(numberAsString);
+        System.out.println(number1);
+
+
 
 
 
