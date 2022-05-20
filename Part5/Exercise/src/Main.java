@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -24,7 +26,15 @@ public class Main {
 
         //numberToWords(1);
         //System.out.println(getDigitCount(-12));
-        System.out.println(reverse(001));
+        //System.out.println(reverse(001));
+
+        //System.out.println(canPack(2,4,9));
+
+        //System.out.println(getLargestPrime(45));
+        //printSquareStar(8);
+        //inputThenPrintSumAndAverage();
+        System.out.println(getBucketCount(3.4,1.5));
+
 
     }
 
@@ -366,7 +376,7 @@ public class Main {
 
     public static int getDigitCount(int number){
         int count = 0;
-        if(number<0){
+        if(number<0 ){
             return -1;
         }
         else if (number == 0){
@@ -378,5 +388,152 @@ public class Main {
         }
         return count;
     }
+
+    //Exercise Flour Pack Problem
+    public static boolean canPack(int bigCount, int smallCount, int goal){
+        //big flour bags - 5kgs each
+        //small -1kg each
+        //goal- amount of kilos of four neede to assemble a package
+        //at least equal to goal
+        int total = bigCount * 5 + smallCount;
+        int smallNeed = goal % 5;
+        int bigNeed = goal/5;
+        if(goal<0 || bigCount<0 || smallCount<0 ||total < goal
+                ||(goal<5 &&bigCount>0)||(goal>5&&smallCount < smallNeed)){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    //Largest Prime -NEED TO REVIEW!!
+    public static int getLargestPrime(int number){
+        int largestPrimeNum = 0;
+        int tempNum = number;
+        if(number < 2){
+            return -1;
+        }
+        //1 cannot consider as prime numbers
+
+            for(int i = 2; i<= number/2; i++){
+                //System.out.println("i is "+ i);
+                while(tempNum % i == 0){
+                    //System.out.println("temp num is "+tempNum);
+                    tempNum = tempNum/i;
+                    //System.out.println("new temp num is "+tempNum);
+                    largestPrimeNum = i;
+                    //System.out.println("largest prime num is "+ largestPrimeNum);
+                }
+            }
+            if(largestPrimeNum != 0){
+                return largestPrimeNum;
+            }
+        return number;
+    }
+
+    public static void printSquareStar (int number){
+        int totalRow = number;
+        int totalColumn = number;
+        if(number < 5){
+            System.out.println("Invalid Value");
+        }
+        else{
+            for(int currentRow = 0; currentRow< totalRow; currentRow++){
+                for(int currentColumn = 0; currentColumn < totalColumn; currentColumn++){
+                    //in the first and last row
+                    if(currentRow==0||currentRow==totalRow-1){
+                        System.out.print("*");
+                    }
+                    //if row number equal to column number
+                    else if (currentRow == currentColumn) {
+                        //System.out.println("current column is "+ currentColumn);
+                        //System.out.println("current row is " + currentRow);
+                        System.out.print("*");
+                    }
+                    //in the first and last column
+                    else if(currentColumn==0|| currentColumn == totalColumn-1){
+                        System.out.print("*");
+                    }
+                    //when column number equals totalRow - currentRow - 1
+                    //row 1 -> column 4 = 5 - 1 - 1 = 3
+                    //row 3 -> column 2 = 5 - 3 - 1 = 1
+                    else if(currentColumn == totalRow - currentRow - 1){
+                        System.out.print("*");
+                    }
+                    else{
+                        System.out.print(" ");
+                    }
+                }
+                //move to new line
+                System.out.println();
+            }
+        }
+    }
+
+    //Input Calculator
+    public static void inputThenPrintSumAndAverage(){
+        Scanner scanner = new Scanner(System.in);
+        int sum = 0;
+        long average = 0l;
+        int count = 1;
+        while(true){
+            boolean hasNextInt = scanner.hasNextInt();
+            if(hasNextInt){
+                int number = scanner.nextInt();
+                sum += number;
+                double ave = sum/(double)count;
+                //cannot use two int to calculate double, so need to parse
+                average = (long)Math.round(ave);
+                count ++;
+            }
+            else {
+                break;
+            }
+            scanner.nextLine();
+        }
+        System.out.println("SUM = "+sum+" AVG = "+average);
+        scanner.close();
+    }
+
+
+    public static int getBucketCount(double width, double height, double areaPerBucket, int extraBucket){
+
+        int bucketNeedBuy = 0;
+        if(width <=0 || height <= 0 || areaPerBucket <= 0 || extraBucket < 0){
+            return -1;
+        }
+        double paintArea = width * height;
+        //System.out.println("area is " + paintArea);
+        int bucketNeed = getBucketCount(paintArea,areaPerBucket );
+        //System.out.println("bucket all need is "+ bucketNeed);
+        bucketNeedBuy = bucketNeed - extraBucket;
+        //System.out.println("bucket need to buy is " + bucketNeedBuy);
+        return bucketNeedBuy;
+    }
+
+    public static int getBucketCount(double width, double height, double areaPerBucket){
+
+        int bucketNeedBuy = 0;
+        if(width <=0 || height <= 0 || areaPerBucket <= 0){
+            return -1;
+        }
+        double paintArea = width * height;
+        //System.out.println("area is " + paintArea);
+        bucketNeedBuy = getBucketCount(paintArea,areaPerBucket);
+        return bucketNeedBuy;
+    }
+
+
+    public static int getBucketCount(double area, double areaPerBucket){
+
+        int bucketNeedBuy = 0;
+        if( areaPerBucket <= 0 || area <= 0){
+            return -1;
+        }
+        bucketNeedBuy = (int)Math.ceil(area/areaPerBucket);//round up!
+        return bucketNeedBuy;
+    }
+
 
 }
