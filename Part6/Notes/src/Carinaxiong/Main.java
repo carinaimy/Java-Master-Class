@@ -17,9 +17,40 @@ public class Main {
         porsche.setModel("Carrera");
         //cannot access private variables if we
         //call model directly
-        System.out.println(porsche.getModel());
+        //System.out.println(porsche.getModel());
 
         //challenge - bank account
+        System.out.println();
+        //constructor - creating the object
+        BankAccount carinaAccount = new BankAccount();
+
+        //BankAccount carinaAccount = new BankAccount(12345,1000,
+                //"Carina","carinaimy@gmail.com",123456789);
+//        carinaAccount.setCustomerName("Carina");
+//        carinaAccount.setAccountNumber(123456789l);
+//        carinaAccount.setBalance(50000);
+//        carinaAccount.setEmail("carinaimy@gmail.com");
+//        carinaAccount.setPhoneNumber(5106315102l);
+
+//        System.out.println("Account Name: "+carinaAccount.getCustomerName());
+//        System.out.println("Account Number: "+ carinaAccount.getAccountNumber());
+//        System.out.println("Email: "+carinaAccount.getEmail());
+//        System.out.println("Phone Number: "+ carinaAccount.getPhoneNumber());
+//        System.out.println("Balance: "+carinaAccount.getBalance());
+//
+//        System.out.println("Deposit 550 dollars.");
+//        carinaAccount.depositFunds(550);
+//        System.out.println("Current balance: "+carinaAccount.getBalance());
+//        System.out.println("Withdraw 10000");
+//        carinaAccount.withDrawFunds(10000);
+//        System.out.println("Current balance: "+carinaAccount.getBalance());
+//        System.out.println("Attempt withdraw 60000");
+//        carinaAccount.withDrawFunds(60000);
+//        System.out.println("Current Balance: "+carinaAccount.getBalance());
+
+
+
+        //Challenge VipCustomer
 
 
     }
